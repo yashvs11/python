@@ -1,82 +1,115 @@
+#Virus Simulator
+# 28/11/21
+# Yash Vincent Singh
 
-# This function will print out the details about the countries, percentage infected and their lockdown status.
-def print_results(country_tag , infected_percent, lockdown_status):
-    results = "" + country_tag + " has recorded " + str(infected_percent) + " percent infected, and "
-    if lockdown_status == True:
-        results += "it is unfortunately in lockdown."
-    else:
-        results += "luckily is not in lockdown."
-    return results
-
-# this list will store all the names of countries
-country_tag = []
-# this list will store all the infected percentage of the countries
-infected_percent = []
-# this will hold information if the country will declare open or closed
+# This list will store all the names of countries
+name_country = []
+# This list will store all the infected percentage of all the countries
+infected_percentage = []
+# This will declare if the country lockdown status is open or closed
 lockdown_status = []
 
-# this function will collect incoming data from the user
-def add_country():
-    # a while loop for the user to keep on adding countries until the user is finished
+# This function will collect incoming country and infected data
+def countries_to_add():
+    # A loop is used here for the user to add countries until they are done
     while True:
-        # ask the user to enter a country
+        # Ask the user to input a country
         country = input(
-            "Type in the desired country you would like to add and than proceed to tap on enter. Type in \"done\" when you are finished.")
-        infected = f"Report the present amount of infected people for {country} and continue to tap on enter."
+            "Type the country you want to add and then press enter. Type in \"done\" when you are finished adding countries.")
+        infected = f"Report the currently infected percentage for {country} and continue to press on enter."
         if country != "done":
             # converts the string into an integer
             infected = int(input(infected))
             # this will transfer the data entered by the user to the list
-            country_tag.append(country)
-            infected_percent.append(infected)
+            name_country.append(country)
+            infected_percentage.append(infected)
             lockdown_status.append(False)
-            return add_country()
-        # if the user types in done it will break out of the loop
+            return countries_to_add()
+        # When the user types in done the loop will break
         if country == "done":
             break
 
-# This function will enquire from the user which country they want to help
+# This function will enquire which country they would like to help
 def help():
-    help_country = "which country would you like to help? choose from the following"
+    help = "Which country would you like to support ? choose from the recommended list ?"
     while True:
-        # This will show the user the countries he typed in earlier
-        for country in country_tag:
+        # This will print the countries the user tpes in earlier
+        for country in name_country:
             print(country)
-        # ask which country the user wants to help
-        new_help = (input(help_country))
-        # this goes the list to see if the country intended to help is valid
-        for country in country_tag:
-          if new_help == country:
-            # returns the name when the country is valid
-            return new_help
-        # prints an error message if the country doesnt match and goes back to the loop
-        print("Invalid error, try again")
+        # Ask which country the user wants to help
+        help_country = input(help)
+        # Goes through the list of countries to see if its valid
+        for country in name_country:
+            if help_country == country:
+                # This will return the name of the country when it is valid
+                return help_country
+        # This will print an error message if the user tpes in invalid input and it will return to the back of the loop
+        print("Invalid input Please try again")
 
 
-def advance_day(new_help):
+# Function runs the new day and it needs an argument of help_country
+def new_day(help_country):
+    print("***NEW DAY***")
     list = 0
-    for country in country_tag:
-        # When a country is helped than infected percentage decreases by 40%
-        # When the country is on 40% or below we make it equal to 0
-        if country == new_help:
-            if infected_percent[list] >= 40:
-                infected_percent[list] = infected_percent[list] - 40
+    for country in name_country:
+        if country == help_country:
+            # When a country is helped than the infected percentage decreases by 40
+            # When a country is on 40% or below we make it equal to 0
+            if infected_percentage[list] >= 40:
+                infected_percentage[list] = infected_percentage[list] - 40
             else:
-                infected_percent[list] = 0
+                infected_percentage[list] = 0
 
-        # The other countries that didn't get help goes up by 20% for the infected percentage
-        # if the country is already 80% above we make it equal to 100
+        # The other countries that did not get help the infected percentage gies up by 20%
+        # if the country is at 80% or above we make it equal to 100
         else:
-            if infected_percent[list] >= 80:
-                infected_percent[list] = 100
-            else:
-                infected_percent[list] = infected_percent[list] + 20
-        # this will print all the information of the countries status
-        print(print_results(country_tag[list], infected_percent[list],
-                            lockdown_status[list]))
-        list += 1
+            if infected_percentage[list] >= 80:
+               infected_percentage[list] = 100
 
-#Main code
-add_country()
-for i in range(0, 5):
-    advance_day(help())
+            else:
+                infected_percentage[list] = infected_percentage[list] + 20
+        # this will print the present status of the country including infected percentage and lockdown status
+        print(results(name_country[list], infected_percentage[list], lockdown_status[list]))
+
+        list += 1
+    print("***END DAY***")
+
+# This function will print out all information regarding the countries, infected percentage and lockdown status
+def results(name_country , infected_percentage, lockdown_status):
+    results = " " + name_country + " has recorded " + str(infected_percentage) + " percentage infected and "
+    if lockdown_status == True:
+        results += "it is unfortunately in lockdown"
+    else:
+        results += "it is fortunately in lockdown"
+    return  results
+
+#Main Code
+countries_to_add()
+for i in range(0,5):
+    new_day(help())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

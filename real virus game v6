@@ -76,7 +76,8 @@ def new_day(help_country):
 # This function will print out all information regarding the countries, infected percentage and lockdown status
 def results(name_country , infected_percentage, lockdown_status):
     results = " " + name_country + " has recorded " + str(infected_percentage) + " percentage infected and "
-    if lockdown_status == True:
+    if infected_percentage >= 80:
+        lockdown_status = True
         results += "it is unfortunately in lockdown"
     else:
         results += "it is fortunately not in lockdown"

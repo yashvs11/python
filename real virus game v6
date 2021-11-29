@@ -79,7 +79,7 @@ def results(name_country , infected_percentage, lockdown_status):
     if lockdown_status == True:
         results += "it is unfortunately in lockdown"
     else:
-        results += "it is fortunately in lockdown"
+        results += "it is fortunately not in lockdown"
     return results
 
 #Main Code

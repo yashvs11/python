@@ -1,4 +1,0 @@
-def welcome_user():
-    greeting = input("Welcome to the Virus Simulator game.How are you today ?")
-    while len(greeting) <= 10:
-        return countries_to_add()

@@ -33,17 +33,17 @@ def countries_to_add():
 def help():
     help = "Which country would you like to support ? choose from the recommended list ?"
     while True:
-        # This will print the countries the user tpes in earlier
+        # This will print the countries the user types in earlier
         for country in name_country:
             print(country)
         # Ask which country the user wants to help
         help_country = input(help)
-        # Goes through the list of countries to see if its valid
+        # Goes through the list of countries to see if it matches
         for country in name_country:
             if help_country == country:
                 # This will return the name of the country when it is valid
                 return help_country
-        # This will print an error message if the user tpes in invalid input and it will return to the back of the loop
+        # This will print an error message if the user types in invalid input and it will return to the back of the loop
         print("Invalid input Please try again")
 
 
@@ -68,7 +68,6 @@ def new_day(help_country):
 
             else:
                 infected_percentage[list] = infected_percentage[list] + 20
-        # this will print the present status of the country including infected percentage and lockdown status
         print(results(name_country[list], infected_percentage[list], lockdown_status[list]))
 
         list += 1
@@ -81,7 +80,7 @@ def results(name_country , infected_percentage, lockdown_status):
         results += "it is unfortunately in lockdown"
     else:
         results += "it is fortunately in lockdown"
-    return  results
+    return results
 
 #Main Code
 countries_to_add()

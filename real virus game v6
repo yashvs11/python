@@ -49,7 +49,7 @@ def help():
 
 # Function runs the new day and it needs an argument of help_country
 def new_day(help_country):
-    print("***NEW DAY***")
+    print("NEW DAY")
     list = 0
     for country in name_country:
         if country == help_country:
@@ -71,7 +71,7 @@ def new_day(help_country):
         print(results(name_country[list], infected_percentage[list], lockdown_status[list]))
 
         list += 1
-    print("***END DAY***")
+    print("END DAY")
 
 # This function will print out all information regarding the countries, infected percentage and lockdown status
 def results(name_country , infected_percentage, lockdown_status):

@@ -1,0 +1,49 @@
+#this stores all the data the user will produce
+country_list = []
+
+#this function will add a country
+def add_country():
+    while True:
+        country = input("name of country you want to add ?")
+        infected = "how many people affected ?"
+        if country != "done":
+            #ask the user for the number of infected for the his chosen country
+            infected = int(input(infected))
+            #a variale to store data from the user
+            newlist = [country,infected]
+            country_list.append(newlist)
+            return add_country()#returns back to the function for user to add more data
+        #when user tpes in done it will return to def help
+        if country or infected == "done":
+            return help(country,infected)
+
+
+
+
+#this will ask the user which country does he want to help
+def help(country,infected):
+    help_country = "which country would you like to help? choose from the following"
+    while True:
+        #this will print out the users data
+        for i in country_list:
+            print(i)
+        new_help = (input(help_country))#ask the user which country they want to help
+        if new_help != country_list:
+            return advance_day(country,infected,new_help)
+        elif new_help == country_list: #tells the user if they put in invalid input
+            print("invalid error try again")
+
+#
+def advance_day(country,infected,help_country):
+    #this will loop it 5 times
+    for i in range(5):
+     print("**NEW DAY**")
+    #the chosen country matches than same country than conditions will start
+    if help_country != country:
+        infected = infected + 20 #if the the country is not helps it goes up by 20
+        if help_country == country: #if the coutry is helped minus 40
+         infected = infected - 40
+    print("**END DAY**")
+
+
+add_country()

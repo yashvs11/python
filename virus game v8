@@ -2,6 +2,10 @@
 # 28/11/21
 # Yash Vincent Singh
 
+# this will enhance user experience
+import time
+time.sleep(.75)
+
 # This list will store all the names of countries
 name_country = []
 # This list will store all the infected percentage of all the countries
@@ -9,8 +13,14 @@ infected_percentage = []
 # This will declare if the country lockdown status is open or closed
 lockdown_status = []
 
+# This will ask the user about their well being
+def welcome_user():
+    greeting = input("Welcome to the Virus Simulator game.How are you today ?")
+    while len(greeting) <= 10:
+        return countries_to_input()
+
 # This function will collect incoming country and infected data
-def countries_to_add():
+def countries_to_input():
     # A loop is used here for the user to add countries until they are done
     while True:
         # Ask the user to input a country
@@ -24,7 +34,7 @@ def countries_to_add():
             name_country.append(country)
             infected_percentage.append(infected)
             lockdown_status.append(False)
-            return countries_to_add()
+            return countries_to_input()
         # When the user types in done the loop will break
         if country == "done":
             break
@@ -83,10 +93,40 @@ def results(name_country , infected_percentage, lockdown_status):
         results += "it is fortunately not in lockdown"
     return results
 
+
 #Main Code
-countries_to_add()
+welcome_user()
 for i in range(0,5):
     new_day(help())
+    print("Thanks for playing the Virus Simulator")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -98,7 +98,35 @@ def results(name_country , infected_percentage, lockdown_status):
 welcome_user()
 for i in range(0,5):
     new_day(help())
-    print("Thanks for playing the Virus Simulator")
+
+print("Thanks for playing the Virus Simulator")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
